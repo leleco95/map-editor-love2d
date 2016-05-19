@@ -1,2 +1,2 @@
-# map-editor-love2d
-Map Editor para o love2d
+# Txt Map Editor para o Love2D
+Map Editor para o Love2D feito em lua
