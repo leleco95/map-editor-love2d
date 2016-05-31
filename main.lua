@@ -20,11 +20,11 @@ DIVIRTA-SE
 function configuration()
   -- Configurações gerais
   config = {
-    loadMap = true, -- ler o arquivo de mapa já existente para edição? true/false
-    name = "mapa2.txt", -- nome do arquivo contendo o mapa a ser editado
+    loadMap = false, -- ler o arquivo de mapa já existente para edição? true/false
+    name = "Mapa15x15.txt", -- nome do arquivo contendo o mapa a ser editado
     empty = 'X', -- caractere para inicializar o mapa. recomenda-se utilizar letras em maiúsculo ou números. padrão 'X'. caractere utilizado ao apertar backspace
-    lines = 100, -- quantidade de linhas que a matriz do mapa terá. ignorar caso esteja editando um mapa existente
-    columns = 100, -- quantidade de colunas que a matriz do mapa terá. ignorar caso esteja editando um mapa existente
+    lines = 15, -- quantidade de linhas que a matriz do mapa terá. ignorar caso esteja editando um mapa existente
+    columns = 15, -- quantidade de colunas que a matriz do mapa terá. ignorar caso esteja editando um mapa existente
     resize = false, -- alterar o tamanho da janela para caber exatamente o mapa? true/false.
     spacing = 20, -- espaçamento entre letras na visualização. recomendado não alterar
     showLines = 29, -- quantidade de linhas a serem exibidas por vez, válido apenas para resize = false. recomendado não alterar. alteração necessária apenas se "spacing" alterado
@@ -162,12 +162,12 @@ function love.keypressed(key, isrepeat)
   end
   if editor.i < 1 then
     editor.i = config.lines
-    if not config.resize then
+    if not config.resize and config.showLines < config.lines then
       start.line = config.lines - config.showLines + 1
     end
   elseif editor.i > config.lines then
     editor.i = 1
-    if not config.resize then
+    if not config.resize and config.showLines < config.lines then
       start.line = 1
     end
   elseif editor.i < start.line and not config.resize then
@@ -177,12 +177,12 @@ function love.keypressed(key, isrepeat)
   end
   if editor.j < 1 then
     editor.j = config.columns
-    if not config.resize then
+    if not config.resize and config.showColumns < config.columns then
       start.column = config.columns - config.showColumns + 1
     end
   elseif editor.j > config.columns then
     editor.j = 1
-    if not config.resize then
+    if not config.resize and config.showColumns < config.columns then
       start.column = 1
     end
   elseif editor.j < start.column and not config.resize then
