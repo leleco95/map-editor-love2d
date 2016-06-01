@@ -92,6 +92,7 @@ function love.keypressed(key, isrepeat)
     else
       map[editor.i][editor.j] = key
     end
+    editor.j = editor.j + 1
     saveMap(system.backup)
   elseif key == "return" or key == "escape" then
     saveMap(config.name)
